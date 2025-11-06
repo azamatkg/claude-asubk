@@ -14,51 +14,58 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="row">
-            <div class="col s12 m6 offset-m3 l4 offset-l4">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="center-align">
-                            <i class="material-icons large primary-text">account_balance</i>
-                            <h4>Loan Management System</h4>
-                            <p class="grey-text">Please login to continue</p>
-                        </div>
+        <div class="login-wrapper">
+            <div class="login-header">
+                <i class="material-icons">folder</i>
+                <h1>Loan Management System</h1>
+                <p>Sign in to your account</p>
+            </div>
 
-                        <form id="loginForm">
-                            <div class="input-field">
-                                <i class="material-icons prefix">person</i>
-                                <input id="username" type="text" class="validate" required>
-                                <label for="username">Username</label>
-                            </div>
+            <div id="errorMessage" class="error-message"></div>
 
-                            <div class="input-field">
-                                <i class="material-icons prefix">lock</i>
-                                <input id="password" type="password" class="validate" required>
-                                <label for="password">Password</label>
-                            </div>
-
-                            <div id="errorMessage" class="red-text center-align" style="display: none; margin-bottom: 15px;"></div>
-
-                            <button class="btn waves-effect waves-light btn-large full-width" type="submit">
-                                Login
-                                <i class="material-icons right">send</i>
-                            </button>
-                        </form>
-
-                        <div class="divider" style="margin: 20px 0;"></div>
-
-                        <div class="grey-text text-darken-1 small-text">
-                            <p class="center-align"><strong>Demo Credentials:</strong></p>
-                            <ul>
-                                <li><strong>Admin:</strong> admin / admin123</li>
-                                <li><strong>Loan Officer:</strong> officer / officer123</li>
-                                <li><strong>Commission Member:</strong> member / member123</li>
-                                <li><strong>Commission Head:</strong> head / head123</li>
-                                <li><strong>Collateral Officer:</strong> collateral / collateral123</li>
-                            </ul>
-                        </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Email address</label>
+                    <div class="input-wrapper">
+                        <i class="material-icons">email</i>
+                        <input id="username" type="text" class="form-input" placeholder="Enter email" required>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="material-icons">lock</i>
+                        <input id="password" type="password" class="form-input" placeholder="Enter password" required>
+                    </div>
+                </div>
+
+                <button class="btn-login" type="submit">
+                    Sign In to System
+                </button>
+            </form>
+
+            <div class="demo-section">
+                <h3 class="demo-title">Test Accounts for Demo</h3>
+                <div class="demo-grid">
+                    <div class="demo-account">
+                        <div class="account-role">Administrator</div>
+                        <div class="account-cred">admin@bank.ru (fast access)</div>
+                    </div>
+                    <div class="demo-account">
+                        <div class="account-role">Manager</div>
+                        <div class="account-cred">manager@bank.ru (fast access)</div>
+                    </div>
+                    <div class="demo-account">
+                        <div class="account-role">Operator</div>
+                        <div class="account-cred">operator@bank.ru (fast access)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-footer">
+                <p>Loan Management System for credit and collateral documentation</p>
+                <p>Management of programs, decisions, and reference materials</p>
             </div>
         </div>
     </div>

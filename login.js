@@ -3,13 +3,19 @@ if (Auth.isAuthenticated()) {
     window.location.href = 'main.html';
 }
 
-// Handle login form submission
+// ============================================
+// LOGIN FORM HANDLER
+// ============================================
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('errorMessage');
+
+    // Clear previous error
+    errorMessage.classList.remove('show');
+    errorMessage.textContent = '';
 
     // Attempt login
     const result = Auth.login(username, password);
@@ -19,28 +25,30 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         M.toast({html: 'Login successful! Redirecting...', classes: 'green'});
         setTimeout(() => {
             window.location.href = 'main.html';
-        }, 1000);
+        }, 800);
     } else {
         // Show error message
         errorMessage.textContent = result.message;
-        errorMessage.style.display = 'block';
-
-        // Shake the form for visual feedback
-        const card = document.querySelector('.card');
-        card.style.animation = 'shake 0.5s';
-        setTimeout(() => {
-            card.style.animation = '';
-        }, 500);
+        errorMessage.classList.add('show');
     }
 });
 
-// Add shake animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-        20%, 40%, 60%, 80% { transform: translateX(10px); }
-    }
-`;
-document.head.appendChild(style);
+// ============================================
+// DEMO ACCOUNTS CLICK HANDLER
+// ============================================
+document.querySelectorAll('.demo-account').forEach(account => {
+    account.addEventListener('click', function(e) {
+        const cred = this.querySelector('.account-cred').textContent;
+        // Extract just the email part
+        const email = cred.split(' ')[0];
+
+        // Fill in the username field
+        document.getElementById('username').value = email;
+
+        // Focus on password field
+        document.getElementById('password').focus();
+
+        // Show toast
+        M.toast({html: 'Demo account selected. Enter password: ' + email.split('@')[0], classes: 'blue'});
+    });
+});

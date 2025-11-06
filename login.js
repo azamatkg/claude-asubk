@@ -38,17 +38,15 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 // ============================================
 document.querySelectorAll('.demo-account').forEach(account => {
     account.addEventListener('click', function(e) {
-        const cred = this.querySelector('.account-cred').textContent;
-        // Extract just the email part
-        const email = cred.split(' ')[0];
+        const username = this.getAttribute('data-username');
+        const password = this.getAttribute('data-password');
+        const role = this.querySelector('.account-role').textContent;
 
-        // Fill in the username field
-        document.getElementById('username').value = email;
-
-        // Focus on password field
-        document.getElementById('password').focus();
+        // Fill in both username and password fields
+        document.getElementById('username').value = username;
+        document.getElementById('password').value = password;
 
         // Show toast
-        M.toast({html: 'Demo account selected. Enter password: ' + email.split('@')[0], classes: 'blue'});
+        M.toast({html: 'Demo account selected: ' + role, classes: 'blue'});
     });
 });

@@ -10,15 +10,19 @@ This is a **Loan Management System** - a client-side web application demonstrati
 - Static HTML/CSS/JavaScript (no build tools required)
 - Client-side only with mock authentication
 - 5 user roles: Admin, Loan Officer, Commission Member, Commission Head, Collateral Officer
-- Material Design UI using Materialize CSS framework
+- Modern Bootstrap 5 UI inspired by Gentelella admin template
+- Professional, responsive design with smooth animations
 - Not production-ready (demonstration/prototype only)
 
 ## Architecture & Technology Stack
 
 ### Core Technologies
 - **HTML5/CSS3/JavaScript (Vanilla)**: No frameworks (no React, Vue, Angular, etc.)
-- **Materialize CSS 1.0.0**: Material Design CSS framework via CDN
-- **Google Fonts & Material Icons**: Loaded from CDN
+- **Bootstrap 5.3.6**: Modern responsive CSS framework via CDN
+- **Font Awesome 6.4.0**: Icon library (replaced Material Icons)
+- **Chart.js 4.4.0**: Data visualization library for future charts (included)
+- **DataTables 1.13.6**: Advanced table functionality library (included)
+- **Google Fonts (Inter)**: Modern font family
 - **localStorage API**: Session and user state persistence
 
 ### Architecture Pattern
@@ -45,12 +49,12 @@ This is a **Loan Management System** - a client-side web application demonstrati
 ### Main Files
 | File | Purpose |
 |------|---------|
-| `index.html` | Login page with form and demo credentials |
-| `main.html` | Protected dashboard showing user profile, permissions, activity |
+| `index.html` | Bootstrap 5 login page with responsive form and test account demo |
+| `main.html` | Bootstrap 5 protected dashboard with sidebar, profile section, permissions, activity |
 | `auth.js` | Core module: `Auth.login()`, `Auth.logout()`, `Auth.isAuthenticated()`, `Auth.getCurrentUser()`, `Auth.hasPermission()`, user definitions |
-| `login.js` | Form submission handler with validation and error display |
-| `main.js` | Dashboard logic: populate profile data, init Materialize components, logout handler |
-| `styles.css` | Global styling and responsive design |
+| `login.js` | Form submission handler with Bootstrap toast notifications |
+| `main.js` | Dashboard logic: populate profile data, initialize Bootstrap components, logout handler |
+| `styles.css` | Bootstrap 5 overrides and global styling for Gentelella-inspired design |
 
 ### Authentication & Authorization
 - **Mock Users** (in `auth.js`): `admin/admin123`, `officer/officer123`, `member/member123`, `head/head123`, `collateral/collateral123`
@@ -124,14 +128,17 @@ Then visit `http://localhost:8000/index.html`
 - Include timestamp for display purposes
 
 ### UI Component Initialization
-- Materialize components require `M.AutoInit()` call in JavaScript
-- Called in `main.js` after DOM population
-- Some components (toasts, modals) auto-initialize
+- Bootstrap components auto-initialize via `bootstrap.js` bundle
+- Toast notifications created dynamically using Bootstrap's Toast API
+- No manual component initialization needed (Bootstrap handles it)
+- Custom `showBootstrapToast()` helper function in login.js and main.js
 
 ### Responsive Design
 - Mobile-first approach with media queries in `styles.css`
-- Materialize grid system handles responsive layout
-- Test on multiple viewport sizes
+- Bootstrap 5 grid system with responsive breakpoints (xs, sm, md, lg, xl, xxl)
+- Sidebar collapses on mobile devices
+- Fixed navbar with responsive collapse menu
+- Test on multiple viewport sizes (mobile, tablet, desktop)
 
 ## Known Limitations & Security Notes
 
@@ -162,19 +169,27 @@ Then visit `http://localhost:8000/index.html`
 ## Dependencies
 
 ### External CDN Dependencies (No npm)
-- **Materialize CSS 1.0.0**: Framework and components
-- **Google Fonts**: Roboto font family
-- **Material Icons**: Icon library
+- **Bootstrap 5.3.6**: Core CSS framework and components
+- **Font Awesome 6.4.0**: Icon library (2000+ icons)
+- **Chart.js 4.4.0**: Data visualization library for future chart features
+- **DataTables 1.13.6**: Advanced table functionality for future data displays
+- **Google Fonts (Inter)**: Modern sans-serif font family
+- **jQuery 3.7.0**: Required for DataTables (minimal usage)
 - All loaded via CDN links in HTML `<head>`
 
 ### No Package.json
-- No npm dependencies
-- No build or compilation step
+- No npm dependencies required
+- No build or compilation step needed
 - No node_modules directory
+- Pure HTML/CSS/JavaScript delivery
 
 ## Useful References
 
-- **Materialize Docs**: https://materializecss.com/
-- **Material Icons**: https://fonts.google.com/icons
+- **Bootstrap 5 Docs**: https://getbootstrap.com/docs/5.3/
+- **Bootstrap Components**: https://getbootstrap.com/docs/5.3/components/
+- **Font Awesome Icons**: https://fontawesome.com/icons
+- **Chart.js**: https://www.chartjs.org/
+- **DataTables**: https://datatables.net/
 - **localStorage API**: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
-- **ES5 JavaScript Support**: All code compatible with modern browsers
+- **Modern JavaScript Support**: All code compatible with ES6+ browsers
+- **Gentelella Template**: https://github.com/ColorlibHQ/gentelella (design inspiration)
